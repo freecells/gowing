@@ -36,7 +36,7 @@ func init() {
 
 	// for _, page := range pages {
 	// 	files := append(parts, page, layouts[0])
-	// 	fmt.Println(filepath.Base(page))
+	// 	Base(page))
 	// 	templates[filepath.Base(page)] = template.Must(template.ParseFiles(files...))
 	// }
 
@@ -74,14 +74,10 @@ func loadTemplates() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(layoutFiles)
-
 	includeFiles, err := filepath.Glob(templateConfig.TemplateIncludePath + "*.html")
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println(includeFiles)
 
 	mainTemplate := template.New("main")
 
@@ -91,8 +87,6 @@ func loadTemplates() {
 	}
 	for _, file := range includeFiles {
 		fileName := filepath.Base(file)
-
-		fmt.Println(fileName)
 
 		files := append(layoutFiles, file)
 		templates[fileName], err = mainTemplate.Clone()
@@ -120,6 +114,7 @@ func renderTemplate(w http.ResponseWriter, name string, data interface{}) {
 	defer bufpool.Put(buf)
 
 	err := tmpl.Execute(buf, data)
+
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -161,7 +156,6 @@ type Page struct {
 }
 
 func dealList(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(templates)
 
 	renderTemplate(w, "list.html", "")
 
