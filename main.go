@@ -153,6 +153,11 @@ type Page struct {
 	Title string
 	Body  string
 	Datas []int
+	Mul   interface{}
+}
+
+func mul(a, b int) int {
+	return a * b
 }
 
 func dealList(w http.ResponseWriter, r *http.Request) {
@@ -167,6 +172,7 @@ func dealTpl(w http.ResponseWriter, r *http.Request) {
 		Title: "Deal tpl",
 		Body:  "xxxx666",
 		Datas: []int{1, 2, 3, 4, 5, 6, 8, 2, 1, 23, 3, 545, 1, 54, 818, 6, 5194, 1561, 6, 56},
+		Mul:   mul,
 	}
 
 	renderTemplate(w, "index.html", pdata)
