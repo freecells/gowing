@@ -10,12 +10,14 @@ import (
 	"github.com/oxtoacart/bpool"
 )
 
+//Gowing struct
 type Gowing struct {
 }
 
 var templates map[string]*template.Template
 var bufpool *bpool.BufferPool
 
+//TemplateConfig config data
 type TemplateConfig struct {
 	TemplateLayoutPath string
 	TemplatePagesPath  string
@@ -38,6 +40,11 @@ var tplConfig TemplateConfig
 
 // }
 
+func main() {
+
+}
+
+//New a gowing
 func (gw *Gowing) New(layoutPath, pagePath, extension string) {
 	tplConfig.TemplateLayoutPath = layoutPath
 	tplConfig.TemplatePagesPath = pagePath
@@ -46,12 +53,14 @@ func (gw *Gowing) New(layoutPath, pagePath, extension string) {
 
 }
 
+//LoadConfiguration load template config like view/layout/ view/pages/  html
 func (gw *Gowing) LoadConfiguration(layoutPath, pagePath, extension string) {
 	tplConfig.TemplateLayoutPath = layoutPath
 	tplConfig.TemplatePagesPath = pagePath
 	tplConfig.TemplateExtension = "*." + extension
 }
 
+//LoadTemplates load pages
 func (gw *Gowing) LoadTemplates() {
 	if templates == nil {
 		templates = make(map[string]*template.Template)
@@ -91,6 +100,7 @@ func (gw *Gowing) LoadTemplates() {
 	log.Println("buffer allocation successful")
 }
 
+//View show a html
 func (gw *Gowing) View(w http.ResponseWriter, name string, data interface{}) {
 	tmpl, ok := templates[name]
 	if !ok {
