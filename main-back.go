@@ -13,36 +13,6 @@ import (
 
 func init() {
 
-	// if templates == nil {
-	// 	templates = make(map[string]*template.Template)
-	// }
-	// //templatesDir := "./templates/"
-	// templatesDir := "./views/"
-
-	// layouts, err := filepath.Glob(templatesDir + "layouts/admin.html")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// parts, err := filepath.Glob(templatesDir + "parts/*.html")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// pages, err := filepath.Glob(templatesDir + "pages/*.html")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// for _, page := range pages {
-	// 	files := append(parts, page, layouts[0])
-	// 	Base(page))
-	// 	templates[filepath.Base(page)] = template.Must(template.ParseFiles(files...))
-	// }
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
 	loadConfiguration()
 	loadTemplates()
 }
