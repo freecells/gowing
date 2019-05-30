@@ -1,4 +1,4 @@
-package main
+package gowing
 
 import (
 	"fmt"
