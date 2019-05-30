@@ -26,6 +26,26 @@ var mainTmpl = `{{define "main" }} {{ template "layout" . }} {{ end }}`
 
 var tplConfig TemplateConfig
 
+// func main() {
+// 	var gow *Gowing
+// 	gow.New("views/layouts/", "views/pages/", "html")
+
+// 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+// 		gow.View(w, "list.html", "")
+// 	})
+
+// 	http.ListenAndServe(":8080", nil)
+
+// }
+
+func (gw *Gowing) New(layoutPath, pagePath, extension string) {
+	tplConfig.TemplateLayoutPath = layoutPath
+	tplConfig.TemplatePagesPath = pagePath
+	tplConfig.TemplateExtension = "*." + extension
+	gw.LoadTemplates()
+
+}
+
 func (gw *Gowing) LoadConfiguration(layoutPath, pagePath, extension string) {
 	tplConfig.TemplateLayoutPath = layoutPath
 	tplConfig.TemplatePagesPath = pagePath
