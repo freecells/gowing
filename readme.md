@@ -37,7 +37,7 @@ Pieline: first func return result  is the next func argument
 {{ call .Mul 9 9 }}  
 
 <h3>html index js lan </h3>  
-{{ html "<h2> You are awesome </h2>" }} <br>
+{{ html "<span> You are <b>awesome</b> </span>" }} <br>
 {{ index .Datas }} <br>
 {{ js "<script>alert('You are awesome')</script>" }} <br>
 {{ len "123456789哈哈" }} <br>
